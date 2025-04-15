@@ -29,6 +29,7 @@ func (l *WechatLoginLogic) WechatLogin(ctx context.Context, req *types.QrcodeReq
 	if err != nil {
 		return nil, err
 	}
+	l.Infof("rsp: %+v", rsp)
 	return &types.QrcodeResponse{
 		Message: "ok",
 		Url:     rsp.Url,

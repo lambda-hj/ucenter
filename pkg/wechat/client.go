@@ -11,7 +11,7 @@ func MustNewWeChatClient(appid, secret, token, aesKey, notifyURL string) *offici
 		NotifyURL: notifyURL, // 公众号接收消息的URL
 
 		Log: officialAccount.Log{
-			Level:  "info",
+			Level:  "debug",
 			Stdout: true,
 		},
 
