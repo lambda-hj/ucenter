@@ -1,16 +1,17 @@
-package public
+package wechat
 
 import (
 	"net/http"
 
-	"github.com/zeromicro/go-zero/rest/httpx"
-	"ucenter/internal/logic/public"
+	"ucenter/internal/logic/wechat"
 	"ucenter/internal/svc"
+
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 func WechatMessageVertifyHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
-		l := public.NewWechatMessageVertifyLogic(r.Context(), svcCtx)
+		l := wechat.NewWechatMessageVertifyLogic(r.Context(), svcCtx)
 		err := l.WechatMessageVertify(r.Context(), r)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)

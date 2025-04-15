@@ -15,7 +15,8 @@ type (
 )
 
 @server (
-	group: public
+	prefix: "/api/v1"
+	group:  public
 )
 service ucenter {
 	@doc (
@@ -26,16 +27,17 @@ service ucenter {
 }
 
 @server (
-	group: public
+	prefix: "/api/v1"
+	group:  wechat
 )
 service ucenter {
 	@doc (
 		summary: "微信消息回调消息与验证"
 	)
 	@handler WechatMessageNotify
-	post /api/v1/noauth/wechat/notify
+	post /api/v1/wechat/notify
 
 	@handler WechatMessageVertify
-	post /api/v1/noauth/wechat/vertify
+	get /api/v1/wechat/notify
 }
 

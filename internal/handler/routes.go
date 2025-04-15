@@ -7,6 +7,7 @@ import (
 	"net/http"
 
 	public "ucenter/internal/handler/public"
+	wechat "ucenter/internal/handler/wechat"
 	"ucenter/internal/svc"
 
 	"github.com/zeromicro/go-zero/rest"
@@ -22,6 +23,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 				Handler: public.WechatLoginHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/api/v1"),
 	)
 
 	server.AddRoutes(
@@ -29,14 +31,15 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				// 微信消息回调消息与验证
 				Method:  http.MethodPost,
-				Path:    "/api/v1/noauth/wechat/notify",
-				Handler: public.WechatMessageNotifyHandler(serverCtx),
+				Path:    "/api/v1/wechat/notify",
+				Handler: wechat.WechatMessageNotifyHandler(serverCtx),
 			},
 			{
-				Method:  http.MethodPost,
-				Path:    "/api/v1/noauth/wechat/vertify",
-				Handler: public.WechatMessageVertifyHandler(serverCtx),
+				Method:  http.MethodGet,
+				Path:    "/api/v1/wechat/notify",
+				Handler: wechat.WechatMessageVertifyHandler(serverCtx),
 			},
 		},
+		rest.WithPrefix("/api/v1"),
 	)
 }

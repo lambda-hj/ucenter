@@ -3,4 +3,4 @@ Host: 0.0.0.0
 Port: 8000
 
 Wechat:
-  NotifyURL: "https://your-domain.com/api/v1/wechat/notify"
+  NotifyURL: "https://api.bbnice.net/api/v1/noauth/wechat/notify"

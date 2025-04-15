@@ -1,7 +1,8 @@
-package public
+package wechat
 
 import (
 	"context"
+
 	"io"
 	"net/http"
 
