@@ -15,29 +15,27 @@ type (
 )
 
 @server (
-	group: qrcode
+	group: public
 )
-service login_qrcode {
+service ucenter {
 	@doc (
 		summary: "获取微信登录二维码"
 	)
-	@handler QrcodeLoginHandler
-	post /api/v1/noauth/login (QrcodeRequest) returns (QrcodeResponse)
+	@handler WechatLogin
+	post /api/v1/public/login (QrcodeRequest) returns (QrcodeResponse)
 }
 
-type (
-	WechatMessageResponse {
-		Message string `json:"message"`
-	}
+@server (
+	group: public
 )
-
-@server(
-	group: wechat
-)
-service wechat_message {
-	@doc(
-		summary: "微信消息回调"
+service ucenter {
+	@doc (
+		summary: "微信消息回调消息与验证"
 	)
-	@handler WechatMessageHandler
-	post /api/v1/noauth/wechat/notify () returns (WechatMessageResponse)
+	@handler WechatMessageNotify
+	post /api/v1/noauth/wechat/notify
+
+	@handler WechatMessageVertify
+	post /api/v1/noauth/wechat/vertify
 }
+

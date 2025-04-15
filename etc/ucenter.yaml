@@ -1,0 +1,6 @@
+Name: ucenter
+Host: 0.0.0.0
+Port: 8000
+
+Wechat:
+  NotifyURL: "https://your-domain.com/api/v1/wechat/notify"

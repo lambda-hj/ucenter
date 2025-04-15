@@ -4,15 +4,15 @@ import (
 	"flag"
 	"fmt"
 
-	"ucenter/src/internal/config"
-	"ucenter/src/internal/handler"
-	"ucenter/src/internal/svc"
+	"ucenter/internal/config"
+	"ucenter/internal/handler"
+	"ucenter/internal/svc"
 
 	"github.com/zeromicro/go-zero/core/conf"
 	"github.com/zeromicro/go-zero/rest"
 )
 
-var configFile = flag.String("f", "etc/loginqrcode.yaml", "the config file")
+var configFile = flag.String("f", "etc/ucenter.yaml", "the config file")
 
 func main() {
 	flag.Parse()
