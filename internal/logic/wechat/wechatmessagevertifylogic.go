@@ -23,10 +23,10 @@ func NewWechatMessageVertifyLogic(ctx context.Context, svcCtx *svc.ServiceContex
 	}
 }
 
-func (l *WechatMessageVertifyLogic) WechatMessageVertify(ctx context.Context, r *http.Request) error {
-	_, err := l.svcCtx.Wechat.Server.VerifyURL(r)
+func (l *WechatMessageVertifyLogic) WechatMessageVertify(ctx context.Context, r *http.Request) (*http.Response, error) {
+	rsp, err := l.svcCtx.Wechat.Server.VerifyURL(r)
 	if err != nil {
-		return err
+		return nil, err
 	}
-	return nil
+	return rsp, nil
 }
