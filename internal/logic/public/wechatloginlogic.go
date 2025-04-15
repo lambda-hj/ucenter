@@ -24,8 +24,13 @@ func NewWechatLoginLogic(ctx context.Context, svcCtx *svc.ServiceContext) *Wecha
 	}
 }
 
-func (l *WechatLoginLogic) WechatLogin(req *types.QrcodeRequest) (resp *types.QrcodeResponse, err error) {
-	// todo: add your logic here and delete this line
-
-	return
+func (l *WechatLoginLogic) WechatLogin(ctx context.Context, req *types.QrcodeRequest) (resp *types.QrcodeResponse, err error) {
+	rsp, err := l.svcCtx.Wechat.QRCode.Temporary(ctx, req.Machine_id, 60*30)
+	if err != nil {
+		return nil, err
+	}
+	return &types.QrcodeResponse{
+		Message: "ok",
+		Url:     rsp.Url,
+	}, nil
 }

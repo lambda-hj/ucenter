@@ -3,10 +3,11 @@ package public
 import (
 	"net/http"
 
-	"github.com/zeromicro/go-zero/rest/httpx"
 	"ucenter/internal/logic/public"
 	"ucenter/internal/svc"
 	"ucenter/internal/types"
+
+	"github.com/zeromicro/go-zero/rest/httpx"
 )
 
 // 获取微信登录二维码
@@ -19,7 +20,7 @@ func WechatLoginHandler(svcCtx *svc.ServiceContext) http.HandlerFunc {
 		}
 
 		l := public.NewWechatLoginLogic(r.Context(), svcCtx)
-		resp, err := l.WechatLogin(&req)
+		resp, err := l.WechatLogin(r.Context(), &req)
 		if err != nil {
 			httpx.ErrorCtx(r.Context(), w, err)
 		} else {
