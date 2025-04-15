@@ -1,0 +1,43 @@
+info (
+	title:   "wechat login"
+	desc:    "微信登录接口"
+	version: "1.0"
+)
+
+type (
+	QrcodeRequest {
+		Machine_id string `json:"machine_id"`
+	}
+	QrcodeResponse {
+		Message string `json:"message"`
+		Url     string `json:"url"`
+	}
+)
+
+@server (
+	group: qrcode
+)
+service login_qrcode {
+	@doc (
+		summary: "获取微信登录二维码"
+	)
+	@handler QrcodeLoginHandler
+	post /api/v1/noauth/login (QrcodeRequest) returns (QrcodeResponse)
+}
+
+type (
+	WechatMessageResponse {
+		Message string `json:"message"`
+	}
+)
+
+@server(
+	group: wechat
+)
+service wechat_message {
+	@doc(
+		summary: "微信消息回调"
+	)
+	@handler WechatMessageHandler
+	post /api/v1/noauth/wechat/notify () returns (WechatMessageResponse)
+}

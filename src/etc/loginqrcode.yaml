@@ -1,0 +1,10 @@
+Name: login_qrcode
+Host: 0.0.0.0
+Port: 8888
+
+Wechat:
+  AppID: "wx30470b93b8862f71"
+  AppSecret: "e436b14c6ae4f48845a0df580023f6a0"
+  Token: "your_token_here"
+  AESKey: "your_aes_key_here"
+  NotifyURL: "https://your-domain.com/api/v1/wechat/notify"
