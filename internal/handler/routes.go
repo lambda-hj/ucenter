@@ -19,7 +19,7 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				// 获取微信登录二维码
 				Method:  http.MethodPost,
-				Path:    "/api/v1/public/login",
+				Path:    "/public/login",
 				Handler: public.WechatLoginHandler(serverCtx),
 			},
 		},
@@ -31,12 +31,12 @@ func RegisterHandlers(server *rest.Server, serverCtx *svc.ServiceContext) {
 			{
 				// 微信消息回调消息与验证
 				Method:  http.MethodPost,
-				Path:    "/api/v1/wechat/notify",
+				Path:    "/wechat/notify",
 				Handler: wechat.WechatMessageNotifyHandler(serverCtx),
 			},
 			{
 				Method:  http.MethodGet,
-				Path:    "/api/v1/wechat/notify",
+				Path:    "/wechat/notify",
 				Handler: wechat.WechatMessageVertifyHandler(serverCtx),
 			},
 		},

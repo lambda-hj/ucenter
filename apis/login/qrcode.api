@@ -23,7 +23,7 @@ service ucenter {
 		summary: "获取微信登录二维码"
 	)
 	@handler WechatLogin
-	post /api/v1/public/login (QrcodeRequest) returns (QrcodeResponse)
+	post /public/login (QrcodeRequest) returns (QrcodeResponse)
 }
 
 @server (
@@ -35,9 +35,9 @@ service ucenter {
 		summary: "微信消息回调消息与验证"
 	)
 	@handler WechatMessageNotify
-	post /api/v1/wechat/notify
+	post /wechat/notify
 
 	@handler WechatMessageVertify
-	get /api/v1/wechat/notify
+	get /wechat/notify
 }
 
